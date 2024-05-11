@@ -22,7 +22,7 @@ const UserList = () => {
     if (!tokeenn) {
       navigation.push("/");
     }
-  });
+  },[navigation]);
 
   useEffect(() => {
     const fetchData = async () => {

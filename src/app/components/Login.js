@@ -8,7 +8,7 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [token, setToken] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -17,7 +17,11 @@ const Login = () => {
     if (tokenn) {
       navigation.push("/user-list");
     }
-  }, []);
+    const storedToken = localStorage.getItem("token");
+    if (storedToken) {
+      setToken(storedToken);
+    }
+  }, [navigation]);
 
   const handleLogin = () => {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
